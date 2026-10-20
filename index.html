@@ -108,7 +108,7 @@
   }
   btn.addEventListener('click',()=>{
     if(!playing){
-      playing=true; card.classList.add('playing'); btn.textContent='♡ Gửi thêm lời chúc'; hint.textContent='Một lá thư nhỏ đã mở ra dành riêng cho Trân… 💌';
+      playing=true; card.classList.add('playing'); btn.textContent='♡ Xem thêm lời chúc'; hint.textContent='Một lá thư nhỏ đã mở ra dành riêng cho Trân… 💌';
       wish.textContent=messages[messageIndex]; letterWrap.classList.add('show'); letterWrap.setAttribute('aria-hidden','false'); burst(); for(let i=0;i<36;i++) setTimeout(makePetal,i*75);
       petalTimer=setInterval(makePetal,520);
     } else {
