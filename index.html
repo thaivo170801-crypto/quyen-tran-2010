@@ -3,45 +3,56 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Gửi Quyền Trân — 20/10</title>
+<title>Gửi Quyền Trân — Một chút dịu dàng ngày 20/10</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Quicksand:wght@400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
 <style>
-  :root{--pink:#ff6f9f;--rose:#ff9fba;--cream:#fff8f6;--ink:#713b54}
+  :root{--pink:#f47fa5;--rose:#f8adc4;--cream:#fffaf8;--ink:#75475b;--plum:#bd6386}
   *{box-sizing:border-box}
-  html,body{margin:0;min-height:100%;font-family:ui-rounded,"Segoe UI",system-ui,sans-serif;color:var(--ink)}
-  body{min-height:100vh;overflow:hidden;background:radial-gradient(circle at 20% 15%,#fff 0 5%,transparent 28%),linear-gradient(135deg,#fff5f3,#ffe1ea 48%,#f8d9ef);display:grid;place-items:center;padding:20px}
-  .glow{position:fixed;width:320px;height:320px;border-radius:50%;filter:blur(65px);opacity:.5;pointer-events:none;background:#ffb8cf;animation:floatGlow 8s ease-in-out infinite alternate}
-  .glow.one{top:-120px;left:-70px}.glow.two{right:-120px;bottom:-120px;background:#d9b7ff;animation-delay:-3s}
+  html,body{margin:0;min-height:100%;font-family:'Nunito','Quicksand',ui-rounded,'Segoe UI',sans-serif;color:var(--ink)}
+  body{min-height:100vh;overflow-x:hidden;overflow-y:auto;background:radial-gradient(ellipse at 14% 12%,#fff 0 3%,transparent 32%),radial-gradient(ellipse at 90% 85%,#f4d9f7 0 2%,transparent 30%),linear-gradient(135deg,#fff8f5,#ffe8ee 48%,#fbe5f4);display:grid;place-items:center;padding:28px 16px 46px}
+  .glow{position:fixed;width:320px;height:320px;border-radius:50%;filter:blur(72px);opacity:.38;pointer-events:none;background:#ffc4d5;animation:floatGlow 9s ease-in-out infinite alternate;z-index:0}
+  .glow.one{top:-120px;left:-70px}.glow.two{right:-120px;bottom:-120px;background:#e8cafa;animation-delay:-3s}
+  .corner-flower{position:fixed;z-index:0;pointer-events:none;opacity:.32;font-size:clamp(2rem,6vw,4rem);filter:blur(.2px);animation:flowerSway 6s ease-in-out infinite}
+  .corner-flower.a{left:4%;top:12%;transform-origin:bottom center}.corner-flower.b{right:5%;bottom:13%;animation-delay:-2s}.corner-flower.c{right:12%;top:8%;font-size:2rem;animation-delay:-4s}
+  @keyframes flowerSway{0%,100%{transform:rotate(-8deg) translateY(0)}50%{transform:rotate(9deg) translateY(-10px)}}
   @keyframes floatGlow{to{transform:translate(35px,25px) scale(1.12)}}
-  .card{position:relative;width:min(560px,100%);padding:clamp(28px,6vw,52px) clamp(22px,6vw,48px);text-align:center;border:1px solid rgba(255,255,255,.85);border-radius:30px;background:rgba(255,255,255,.63);box-shadow:0 24px 70px rgba(169,75,111,.16);backdrop-filter:blur(16px);z-index:2;transition:transform .5s,box-shadow .5s}
-  .card.playing{box-shadow:0 28px 90px rgba(236,91,143,.25);transform:translateY(-3px)}
-  .eyebrow{font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:#d45d88;font-weight:800}
-  .bouquet{font-size:clamp(3rem,10vw,4.8rem);line-height:1.25;margin:15px 0 8px;filter:drop-shadow(0 8px 8px #ffb4ca66);animation:bob 3s ease-in-out infinite}
-  @keyframes bob{50%{transform:translateY(-7px) rotate(2deg)}}
-  h1{font-family:Georgia,"Times New Roman",serif;font-weight:700;font-size:clamp(2.2rem,8vw,3.7rem);line-height:1.05;margin:8px 0 14px;color:#c94f7c}
-  .subtitle{font-size:1rem;line-height:1.8;max-width:390px;margin:0 auto;color:#80566a}
-  .divider{display:flex;align-items:center;gap:12px;justify-content:center;margin:23px auto;color:#e58aa9;font-size:1.05rem}.divider:before,.divider:after{content:"";height:1px;width:50px;background:#efb4c7}
-  .wish{min-height:86px;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:clamp(1.08rem,3.7vw,1.35rem);line-height:1.65;color:#85425f;padding:0 2px;transition:opacity .25s}
-  .play{border:0;cursor:pointer;margin-top:18px;padding:15px 27px;border-radius:999px;background:linear-gradient(135deg,#ff79a5,#e85c91);color:#fff;font-size:1rem;font-weight:800;letter-spacing:.02em;box-shadow:0 10px 24px #ed6a9c55;transition:transform .2s,box-shadow .2s}
-  .play:hover{transform:translateY(-2px);box-shadow:0 14px 30px #ed6a9c77}.play:active{transform:scale(.98)}
-  .hint{margin-top:15px;font-size:.78rem;color:#a9788d}
-  .signature{margin-top:22px;font-size:.85rem;color:#b16b87}
-  .petal{position:fixed;top:-40px;z-index:5;pointer-events:none;animation:fall linear forwards;filter:drop-shadow(0 3px 3px #b65a7830)}
-  @keyframes fall{0%{transform:translate3d(0,-5vh,0) rotate(0deg);opacity:0}10%{opacity:1}100%{transform:translate3d(var(--drift),110vh,0) rotate(var(--spin));opacity:.1}}
-  .spark{position:fixed;z-index:1;pointer-events:none;font-size:18px;animation:pop 1.5s ease-out forwards}
-  @keyframes pop{0%{transform:translate(0,0) scale(.3);opacity:0}20%{opacity:1}100%{transform:translate(var(--x),var(--y)) scale(1.25) rotate(25deg);opacity:0}}
-  .letter-wrap{display:grid;grid-template-rows:0fr;opacity:0;transform:translateY(12px);transition:grid-template-rows .7s ease,opacity .7s ease,transform .7s ease;margin-top:0}
-  .letter-wrap.show{grid-template-rows:1fr;opacity:1;transform:translateY(0);margin-top:20px}
+  .card{position:relative;width:min(590px,100%);padding:clamp(25px,6vw,50px) clamp(19px,6vw,46px);text-align:center;border:1px solid rgba(255,255,255,.94);border-radius:34px;background:rgba(255,255,255,.72);box-shadow:0 24px 70px rgba(169,75,111,.14),inset 0 1px 0 #fff;backdrop-filter:blur(18px);z-index:2;transition:transform .6s cubic-bezier(.2,.8,.2,1),box-shadow .6s;overflow:visible}
+  .card:before{content:'✿';position:absolute;top:-19px;left:24px;color:#ef9ab7;font-size:2rem;transform:rotate(-18deg);text-shadow:0 4px 12px #edb4ca66}
+  .card:after{content:'✿';position:absolute;right:23px;bottom:-17px;color:#d7a3df;font-size:1.8rem;transform:rotate(18deg);text-shadow:0 4px 12px #dcb9e766}
+  .card.playing{box-shadow:0 28px 90px rgba(236,91,143,.22),inset 0 1px 0 #fff;transform:translateY(-3px)}
+  .eyebrow{font-size:.76rem;letter-spacing:.13em;color:#c66c8d;font-weight:900}
+  .bouquet{font-size:clamp(3.2rem,10vw,5rem);line-height:1.25;margin:17px 0 10px;filter:drop-shadow(0 8px 8px #ffb4ca55);animation:bob 3.6s ease-in-out infinite;transform-origin:50% 80%}
+  @keyframes bob{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-8px) rotate(2deg)}}
+  h1{font-family:'Pacifico','Quicksand',cursive;font-weight:400;font-size:clamp(2rem,7.6vw,3.35rem);line-height:1.38;margin:8px 0 13px;color:#c65f87;text-shadow:0 3px 0 #fff6f8}
+  .subtitle{font-family:'Quicksand','Nunito',sans-serif;font-size:1rem;font-weight:600;line-height:1.85;max-width:410px;margin:0 auto;color:#866174}
+  .divider{display:flex;align-items:center;gap:12px;justify-content:center;margin:22px auto;color:#e58aa9;font-size:1.08rem}.divider:before,.divider:after{content:"";height:1px;width:clamp(25px,10vw,52px);background:linear-gradient(90deg,transparent,#efb4c7)}.divider:after{transform:scaleX(-1)}
+  .wish{min-height:82px;display:flex;align-items:center;justify-content:center;font-family:'Quicksand','Nunito',sans-serif;font-weight:700;font-size:clamp(1.02rem,3.6vw,1.25rem);line-height:1.75;color:#85425f;padding:0 2px;transition:opacity .3s,transform .3s}
+  .play{position:relative;isolation:isolate;overflow:hidden;border:1px solid #fff8fb;cursor:pointer;margin-top:16px;padding:15px 28px;border-radius:999px;background:linear-gradient(115deg,#f89ab8,#ec77a1 52%,#d979b4);color:#fff;font-family:'Nunito',sans-serif;font-size:1rem;font-weight:900;letter-spacing:.01em;box-shadow:0 10px 24px #ed6a9c44,inset 0 1px 0 #ffffff88;transition:transform .25s,box-shadow .25s}
+  .play:before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 20%,#ffffff66 45%,transparent 70%);transform:translateX(-120%);transition:transform .7s}
+  .play:hover{transform:translateY(-3px);box-shadow:0 14px 30px #ed6a9c66}.play:hover:before{transform:translateX(120%)}.play:active{transform:scale(.97)}
+  .hint{margin-top:15px;font-size:.8rem;font-weight:700;color:#ae8195}
+  .signature{margin-top:21px;font-size:.86rem;font-weight:800;color:#b16b87}
+  .petal{position:fixed;top:-45px;z-index:5;pointer-events:none;animation:fall linear forwards;filter:drop-shadow(0 3px 3px #b65a7820);will-change:transform,opacity}
+  @keyframes fall{0%{transform:translate3d(0,-5vh,0) rotate(0deg) scale(.7);opacity:0}12%{opacity:.95}45%{transform:translate3d(calc(var(--drift)*.45),48vh,0) rotate(calc(var(--spin)*.45)) scale(1)}100%{transform:translate3d(var(--drift),110vh,0) rotate(var(--spin)) scale(.82);opacity:.08}}
+  .spark{position:fixed;z-index:6;pointer-events:none;font-size:clamp(17px,3vw,25px);animation:pop 1.8s cubic-bezier(.15,.7,.2,1) forwards;filter:drop-shadow(0 3px 6px #ed9ab655)}
+  @keyframes pop{0%{transform:translate(0,0) scale(.15) rotate(-20deg);opacity:0}18%{opacity:1}100%{transform:translate(var(--x),var(--y)) scale(1.15) rotate(35deg);opacity:0}}
+  .letter-wrap{display:grid;grid-template-rows:0fr;opacity:0;transform:translateY(16px) scale(.98);transition:grid-template-rows .8s ease,opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1);margin-top:0}
+  .letter-wrap.show{grid-template-rows:1fr;opacity:1;transform:translateY(0) scale(1);margin-top:20px}
   .letter-inner{overflow:hidden;min-height:0}
-  .letter{position:relative;padding:19px 18px 17px;border-radius:18px;background:linear-gradient(145deg,#fffaf8,#fff0f5);border:1px solid #f7c9d9;box-shadow:inset 0 0 0 4px #fff8fa;color:#805067;text-align:left;font-family:Georgia,serif;font-size:.98rem;line-height:1.75}
-  .letter:before{content:'♡';position:absolute;right:13px;top:4px;font-size:1.5rem;color:#ed8eae}
-  .letter-title{text-align:center;font-size:1.15rem;color:#c94f7c;font-weight:bold;margin:0 0 9px}
-  .letter p{margin:8px 0}.letter-sign{text-align:right;color:#c05b85;font-style:italic;margin-top:12px}
-  .footer-note{position:fixed;bottom:12px;left:0;right:0;text-align:center;font-size:.72rem;color:#b17c92;z-index:1}
+  .letter{position:relative;padding:21px 19px 18px;border-radius:21px;background:linear-gradient(145deg,#fffdfb,#fff0f5 72%,#fff7fb);border:1px solid #f4c7d8;box-shadow:inset 0 0 0 4px #fff8fa,0 9px 25px #df9db31c;color:#805067;text-align:left;font-family:'Quicksand','Nunito',sans-serif;font-size:.96rem;font-weight:600;line-height:1.85}
+  .letter:before{content:'♡';position:absolute;right:13px;top:3px;font-size:1.7rem;color:#ed8eae;transform:rotate(12deg)}
+  .letter-title{text-align:center;font-family:'Pacifico','Quicksand',cursive;font-size:1.28rem;color:#c65f87;font-weight:400;margin:0 0 12px;padding-right:15px}
+  .letter p{margin:9px 0}.letter-sign{text-align:right;color:#c05b85;font-style:italic;margin-top:13px}
+  .footer-note{position:fixed;bottom:9px;left:0;right:0;text-align:center;font-size:.72rem;font-weight:700;color:#b17c92;z-index:1;padding:0 8px}
+  @media(max-width:520px){body{padding:22px 13px 45px}.card{border-radius:27px}.corner-flower.a{left:1%;top:4%}.corner-flower.b{right:1%;bottom:7%}.letter{padding:19px 16px;font-size:.92rem}}
   @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}}
 </style>
 </head>
 <body>
 <div class="glow one"></div><div class="glow two"></div>
+<div class="corner-flower a" aria-hidden="true">🌷</div><div class="corner-flower b" aria-hidden="true">🌸</div><div class="corner-flower c" aria-hidden="true">✧</div>
 <main class="card" id="card">
   <div class="eyebrow">A little something for Quyền Trân</div>
   <div class="bouquet" aria-hidden="true">🌷💐🌷</div>
@@ -56,6 +67,7 @@
       <p>Quyền Trân à,</p>
       <p>Nhân ngày 20/10, chúc Trân luôn vui vẻ, xinh tươi và gặp thật nhiều điều may mắn. Mong những ngày mệt mỏi sẽ qua nhanh, những điều tốt đẹp sẽ tìm đến, và Trân lúc nào cũng có lý do để mỉm cười.</p>
       <p>Hy vọng món quà bé xíu này có thể làm ngày hôm nay của Trân vui hơn một chút. Đừng quên dành cho bản thân thật nhiều yêu thương nhé — vì Trân xứng đáng với những điều thật đẹp. 🌸</p>
+      <p>Mong rằng mỗi khi nhìn thấy một bông hoa, Trân sẽ nhớ rằng thế giới này vẫn luôn có những điều nhỏ xinh đang chờ mình khám phá. Chúc nụ cười của Trân luôn rạng rỡ như nắng sớm nha! 🦋</p>
       <p class="letter-sign">Chúc Trân một ngày 20/10 thật ngọt ngào ♡</p>
     </div></div>
   </div>
@@ -77,7 +89,7 @@
     'Nếu hôm nay chưa có ai nhắc, thì để mình nhắc nhé: bạn là một điều rất đáng quý. ✨',
     'Chúc cô gái tên Quyền Trân luôn có thật nhiều niềm vui, ít muộn phiền và gặp thật nhiều điều tử tế. 🌹'
   ];
-  const petals = ['🌸','🌷','🌹','💮','💕','✨','🌼'];
+  const petals = ['🌸','🌷','🌹','💮','💕','✨','🌼','🩷','🦋','✿','♡'];
   let playing = false, messageIndex = 0, petalTimer;
   function makePetal(){
     const el = document.createElement('span'); el.className='petal'; el.textContent=petals[Math.floor(Math.random()*petals.length)];
@@ -97,12 +109,12 @@
   btn.addEventListener('click',()=>{
     if(!playing){
       playing=true; card.classList.add('playing'); btn.textContent='♡ Gửi thêm lời chúc'; hint.textContent='Một lá thư nhỏ đã mở ra dành riêng cho Trân… 💌';
-      wish.textContent=messages[messageIndex]; letterWrap.classList.add('show'); letterWrap.setAttribute('aria-hidden','false'); burst(); for(let i=0;i<24;i++) setTimeout(makePetal,i*100);
-      petalTimer=setInterval(makePetal,380);
+      wish.textContent=messages[messageIndex]; letterWrap.classList.add('show'); letterWrap.setAttribute('aria-hidden','false'); burst(); for(let i=0;i<36;i++) setTimeout(makePetal,i*75);
+      petalTimer=setInterval(makePetal,520);
     } else {
       messageIndex=(messageIndex+1)%messages.length; wish.style.opacity='0';
       setTimeout(()=>{wish.textContent=messages[messageIndex];wish.style.opacity='1';},220);
-      burst(); for(let i=0;i<9;i++) setTimeout(makePetal,i*75);
+      burst(); for(let i=0;i<14;i++) setTimeout(makePetal,i*65);
     }
   });
 })();
